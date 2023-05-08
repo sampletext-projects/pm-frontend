@@ -1,0 +1,22 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputs {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-center {
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  margin: 10px;
+}

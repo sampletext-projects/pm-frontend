@@ -4,6 +4,7 @@ import {Observable, tap} from "rxjs";
 import {LoginRequest} from "../interfaces/login-request.interface";
 import {environment} from "../../environments/environment";
 import {LoginResponse} from "../interfaces/login-response.interface";
+import {RegisterRequest} from "../interfaces/register-request.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,10 @@ export class AuthService {
         this.token = response.token;
         this.refreshToken = response.refreshToken;
       }));
+  }
+
+  public register(request: RegisterRequest): Observable<void> {
+    return this.httpClient.post<void>(`${environment.baseUrl}/auth/login`, request);
   }
 
   public doRefreshToken(): Observable<LoginResponse> {

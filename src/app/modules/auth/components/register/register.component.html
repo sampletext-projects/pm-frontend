@@ -1,1 +1,53 @@
-<p>register works!</p>
+<div class="container">
+  <mat-card class="inputs" [formGroup]="formGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="formGroup.controls['email'].hasError('required')">
+        Введите email
+      </mat-error>
+      <mat-error *ngIf="formGroup.controls['email'].hasError('email')">
+        Введите корректный email
+      </mat-error>
+      <mat-error *ngIf="formGroup.controls['repeat'].hasError('maxlength')">
+        Максимальная длина - {{formGroup.controls['repeat']?.errors?.['maxlength']?.requiredLength}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" (keydown.enter)="onSubmit()">
+      <mat-label>Пароль</mat-label>
+      <input type="password" matInput formControlName="password">
+      <mat-error *ngIf="formGroup.controls['password'].hasError('required')">
+        Заполните это поле
+      </mat-error>
+      <mat-error *ngIf="formGroup.controls['repeat'].hasError('maxlength')">
+        Максимальная длина - {{formGroup.controls['repeat']?.errors?.['maxlength']?.requiredLength}}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" (keydown.enter)="onSubmit()">
+      <mat-label>Повторите пароль</mat-label>
+      <input type="password" matInput formControlName="repeat">
+      <mat-error *ngIf="formGroup.controls['repeat'].hasError('required')">
+        Заполните это поле
+      </mat-error>
+      <mat-error *ngIf="formGroup.controls['repeat'].hasError('maxlength')">
+        Максимальная длина - {{formGroup.controls['repeat']?.errors?.['maxlength']?.requiredLength}}
+      </mat-error>
+      <mat-error *ngIf="formGroup.controls['repeat'].hasError('passwordMismatch')">
+        Пароли не совпадают
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" (keydown.enter)="onSubmit()">
+      <mat-label>Имя пользователя</mat-label>
+      <input type="text" matInput formControlName="username">
+      <mat-error *ngIf="formGroup.controls['username'].hasError('maxlength')">
+        Максимальная длина - {{formGroup.controls['username']?.errors?.['username']?.requiredLength}}
+      </mat-error>
+    </mat-form-field>
+    <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent" (click)="onSubmit()"
+            class="button-center">
+      <span *ngIf="!isFormSent">Войти</span>
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
+      </mat-progress-spinner>
+    </button>
+  </mat-card>
+</div>

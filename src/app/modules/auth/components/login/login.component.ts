@@ -5,6 +5,7 @@ import {AuthService} from "../../../../services/auth.service";
 import {Router} from "@angular/router";
 import {tap} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {LoginRequest} from "../../../../interfaces/login-request.interface";
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.isFormSent = true;
-    let request = this.formGroup.value;
+    let request = <LoginRequest>this.formGroup.value;
     this.authService.login(request)
       .subscribe({
         next: () => {
