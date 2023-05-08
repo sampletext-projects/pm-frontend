@@ -1,0 +1,23 @@
+<div class="container">
+  <mat-card class="inputs" [formGroup]="formGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>Логин</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="formGroup.controls['email'].invalid">
+        Введите email
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Пароль</mat-label>
+      <input type="password" matInput formControlName="password">
+      <mat-error *ngIf="formGroup.controls['password'].invalid">
+        Введите пароль
+      </mat-error>
+    </mat-form-field>
+    <button mat-stroked-button color="primary" type="submit" [disabled]="" (click)="onSubmit()" class="button-center">
+      <span *ngIf="!isFormSent">Войти</span>
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
+      </mat-progress-spinner>
+    </button>
+  </mat-card>
+</div>
