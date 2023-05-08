@@ -7,14 +7,14 @@
         Введите email
       </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" (keydown.enter)="onSubmit()">
       <mat-label>Пароль</mat-label>
       <input type="password" matInput formControlName="password">
       <mat-error *ngIf="formGroup.controls['password'].invalid">
         Введите пароль
       </mat-error>
     </mat-form-field>
-    <button mat-stroked-button color="primary" type="submit" [disabled]="" (click)="onSubmit()" class="button-center">
+    <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent" (click)="onSubmit()" class="button-center">
       <span *ngIf="!isFormSent">Войти</span>
       <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
       </mat-progress-spinner>

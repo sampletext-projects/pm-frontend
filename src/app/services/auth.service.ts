@@ -50,6 +50,6 @@ export class AuthService {
   }
 
   public doRefreshToken(): Observable<LoginResponse> {
-    return this.httpClient.post<LoginResponse>(`${environment.baseUrl}/auth/refreshtoken`, {});
+    return this.httpClient.post<LoginResponse>(`${environment.baseUrl}/auth/refreshToken`, {});
   }
 }

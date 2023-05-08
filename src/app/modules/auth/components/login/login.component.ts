@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../../../services/auth.service";
 import {Router} from "@angular/router";
+import {tap} from "rxjs";
+import {catchError} from "rxjs/operators";
 
 @Component({
   selector: 'app-login',
@@ -38,13 +40,14 @@ export class LoginComponent implements OnInit {
     this.authService.login(request)
       .subscribe({
         next: () => {
+          this.isFormSent = false;
           this.router.navigate(['home'])
+        },
+        error: err => {
+          this.isFormSent = false;
+          console.log(err)
+          // this.matSnackBar.open(err.error, '', {duration: 3000})
         }
       })
-    console.log(this.formGroup.value);
-  }
-
-  getLoginErrors() {
-    return Object.entries(this.formGroup.controls['login'].errors ?? {})
   }
 }

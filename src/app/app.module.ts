@@ -6,12 +6,13 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatExpansionModule} from "@angular/material/expansion";
-import {TokenInterceptor} from "./interceptors/token.interceptor";
+import {RequestsInterceptor} from "./interceptors/requests.interceptor";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
   multi: true,
-  useClass: TokenInterceptor
+  useClass: RequestsInterceptor
 }
 
 @NgModule({
@@ -24,7 +25,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     HttpClientModule,
     BrowserAnimationsModule,
     // NoopAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSnackBarModule,
   ],
   providers: [INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]

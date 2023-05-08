@@ -19,6 +19,9 @@ export class MainPageComponent implements OnInit {
       .subscribe({
         next: () => {
           console.log("Received response")
+        },
+        error: (err) => {
+          console.log(err.message)
         }
       })
   }

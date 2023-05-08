@@ -40,7 +40,6 @@ const routes: Routes = [
     MatInputModule,
     ReactiveFormsModule,
     MatButtonModule,
-    MatSnackBarModule,
     MatProgressSpinnerModule,
     NgxLoadingButtonsModule
   ]
