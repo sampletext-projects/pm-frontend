@@ -1,0 +1,32 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    Explore
+    <span class="spacer"></span>
+    <button mat-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+            (click)="goToCreateProject()">
+      <mat-icon>addchart</mat-icon>
+      Создать проект
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="container">
+  <div class="wrapper" *ngIf="projects.length">
+    <mat-card *ngFor="let project of projects" class="project-card">
+      <mat-card-header>
+        <mat-card-title>{{project.title}}</mat-card-title>
+        <mat-card-subtitle>{{project.description}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-button (click)="openProject(project.id)">Open</button>
+        <button mat-button (click)="joinProject(project.id)">Join</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div *ngIf="!projects.length && !isLoading">
+    Похоже тут пока нет проектов
+  </div>
+  <div *ngIf="isLoading">
+    <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+    </mat-progress-spinner>
+  </div>
+</div>

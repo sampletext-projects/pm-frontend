@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+    <div class="header-container">
+      <div class="header-text">{{project.title}}</div>
+      <div class="header-sub-text">
+        {{project.description}}
+      </div>
+    </div>
+    <div class="col button">
+      <button mat-stroked-button color="warn" (click)="goToExplore()" class="exit-button">
+        Вернуться
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+<div class="container">
+  <div class="navbar">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        Управление
+      </mat-expansion-panel-header>
+      <a
+        [routerLink]="['tasks']"
+        [routerLinkActive]="['active']"
+      >Задачи</a>
+      <a
+        [routerLink]="['participants']"
+        [routerLinkActive]="['active']"
+      >Участники</a>
+      <a
+        [routerLink]="['comments']"
+        [routerLinkActive]="['active']"
+      >Комментарии</a>
+    </mat-expansion-panel>
+  </div>
+  <div class="content">
+    <perfect-scrollbar style="max-width: 100%; max-height: 100%">
+      <div class="inner">
+        <router-outlet></router-outlet>
+      </div>
+    </perfect-scrollbar>
+  </div>
+</div>

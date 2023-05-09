@@ -51,7 +51,7 @@ export class AuthService {
   }
 
   public register(request: RegisterRequest): Observable<void> {
-    return this.httpClient.post<void>(`${environment.baseUrl}/auth/login`, request);
+    return this.httpClient.post<void>(`${environment.baseUrl}/auth/register`, request);
   }
 
   public doRefreshToken(): Observable<LoginResponse> {

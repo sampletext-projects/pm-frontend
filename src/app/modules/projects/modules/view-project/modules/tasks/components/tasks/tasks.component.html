@@ -1,0 +1,7 @@
+<div class="container">
+  <div *ngIf="!tasks.length">Похоже тут ещё нет задач</div>
+  <div *ngFor="let task of tasks">
+    {{task.title}}
+  </div>
+  <button mat-flat-button color="accent" (click)="goToCreateTask()">Create Task</button>
+</div>

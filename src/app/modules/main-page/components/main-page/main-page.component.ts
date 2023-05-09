@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from "../../../../services/project.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-main-page',
@@ -8,21 +9,23 @@ import {ProjectService} from "../../../../services/project.service";
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private projectService: ProjectService) {
+  constructor(
+    private router: Router
+  ) {
   }
 
   ngOnInit(): void {
   }
 
-  do() {
-    this.projectService.explore()
-      .subscribe({
-        next: () => {
-          console.log("Received response")
-        },
-        error: (err) => {
-          console.log(err.message)
-        }
-      })
+  goToLogin() {
+    this.router.navigate(['auth', 'login'])
+  }
+
+  goToRegister() {
+    this.router.navigate(['auth', 'register'])
+  }
+
+  goToProjects() {
+    this.router.navigate(['projects'])
   }
 }

@@ -9,18 +9,18 @@
       <mat-error *ngIf="formGroup.controls['email'].hasError('email')">
         Введите корректный email
       </mat-error>
-      <mat-error *ngIf="formGroup.controls['repeat'].hasError('maxlength')">
-        Максимальная длина - {{formGroup.controls['repeat']?.errors?.['maxlength']?.requiredLength}}
+      <mat-error *ngIf="formGroup.controls['email'].hasError('maxlength')">
+        Максимальная длина - {{formGroup.controls['email']?.errors?.['maxlength']?.requiredLength}}
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" (keydown.enter)="onSubmit()">
       <mat-label>Пароль</mat-label>
       <input type="password" matInput formControlName="password">
-      <mat-error *ngIf="formGroup.controls['repeat'].hasError('required')">
+      <mat-error *ngIf="formGroup.controls['password'].hasError('required')">
         Заполните это поле
       </mat-error>
-      <mat-error *ngIf="formGroup.controls['repeat'].hasError('maxlength')">
-        Максимальная длина - {{formGroup.controls['repeat']?.errors?.['maxlength']?.requiredLength}}
+      <mat-error *ngIf="formGroup.controls['password'].hasError('maxlength')">
+        Максимальная длина - {{formGroup.controls['password']?.errors?.['maxlength']?.requiredLength}}
       </mat-error>
     </mat-form-field>
     <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent" (click)="onSubmit()" class="button-center">

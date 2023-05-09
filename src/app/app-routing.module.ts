@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 
 const routes: Routes = [
@@ -14,6 +14,11 @@ const routes: Routes = [
       .then(m => m.AuthModule)
   },
   {
+    path: 'projects',
+    loadChildren: () => import('./modules/projects/projects.module')
+      .then(m => m.ProjectsModule)
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
@@ -23,8 +28,9 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {paramsInheritanceStrategy: 'always'})
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
