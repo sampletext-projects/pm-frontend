@@ -1,1 +1,28 @@
-<p>invite works!</p>
+<div class="container">
+  <div>
+    Invite
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Search</mat-label>
+    <input type="text" matInput [formControl]="control" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsernameOrEmail">
+      <mat-option *ngFor="let user of usersSearch | async" [value]="user">
+        {{getUsernameOrEmail(user)}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Role</mat-label>
+    <mat-select [formControl]="roleControl">
+      <mat-option [value]="RoleType.Unknown">--</mat-option>
+      <mat-option [value]="RoleType.Admin">Admin</mat-option>
+      <mat-option [value]="RoleType.Readonly">Readonly</mat-option>
+    </mat-select>
+    <mat-error *ngIf="roleControl.hasError('required')">Select User Role</mat-error>
+  </mat-form-field>
+  <button mat-stroked-button (click)="onSubmit()" class="button-center">
+    <span *ngIf="!isSubmitting">Добавить пользователя</span>
+    <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isSubmitting" class="spinner">
+    </mat-progress-spinner>
+  </button>
+</div>

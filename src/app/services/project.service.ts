@@ -7,6 +7,7 @@ import {LoginResponse} from "../interfaces/login-response.interface";
 import {ProjectExploreResponse} from "../interfaces/project-explore-response.interface";
 import {CreateProjectRequest} from "../interfaces/create-project-request.interface";
 import {ProjectGetByIdResponse} from "../interfaces/project-getbyid-response.interface";
+import {AddUserToProjectRequest} from "../interfaces/add-user-to-project-request.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,10 @@ export class ProjectService {
 
   public create(request: CreateProjectRequest): Observable<{id: string}> {
     return this.httpClient.post<{id: string}>(`${environment.baseUrl}/project/create`, request);
+  }
+
+  public addUserToProject(request: AddUserToProjectRequest): Observable<{}> {
+    return this.httpClient.post<{}>(`${environment.baseUrl}/project/addUser`, request);
   }
 
   public join(id: string): Observable<void> {

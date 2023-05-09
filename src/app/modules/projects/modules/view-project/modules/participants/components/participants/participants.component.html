@@ -1,1 +1,62 @@
-<p>participants works!</p>
+<div class="container" cdkDropListGroup>
+  <div mat-subheader>Creator</div>
+  <div
+    class="example-list">
+    <div class=" example-box" *ngIf="!isLoading">
+      <div mat-list-icon>
+        <mat-icon>perm_identity</mat-icon>
+      </div>
+      <div mat-line>{{getUsernameOrEmail(creator)}}</div>
+    </div>
+    <div *ngIf="isLoading" class="example-box">
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+      </mat-progress-spinner>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div mat-subheader>Admins</div>
+  <div cdkDropList
+       class="example-list"
+       #adminList="cdkDropList"
+       [cdkDropListData]="admins"
+       [cdkDropListConnectedTo]="[readonlyList]"
+       (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let admin of admins" cdkDrag>
+      <div mat-list-icon>
+        <mat-icon>perm_identity</mat-icon>
+      </div>
+      <div mat-line>{{getUsernameOrEmail(admin)}}</div>
+    </div>
+    <div *ngIf="!admins.length && !isLoading" class="example-box">
+      <div mat-line>Нет пользователей</div>
+    </div>
+    <div *ngIf="isLoading" class="example-box">
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+      </mat-progress-spinner>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div mat-subheader>Users</div>
+  <div
+    cdkDropList
+    class="example-list"
+    #readonlyList="cdkDropList"
+    [cdkDropListData]="readonlys"
+    [cdkDropListConnectedTo]="[adminList]"
+    (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let user of readonlys" cdkDrag>
+      <div mat-list-icon>
+        <mat-icon>perm_identity</mat-icon>
+      </div>
+      <div mat-line>{{getUsernameOrEmail(user)}}</div>
+    </div>
+    <div *ngIf="!readonlys.length && !isLoading" class="example-box">
+      <div mat-line>Нет пользователей</div>
+    </div>
+    <div *ngIf="isLoading" class="example-box">
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+      </mat-progress-spinner>
+    </div>
+  </div>
+  <a [routerLink]="['invite']" mat-stroked-button>Пригласить участников</a>
+</div>

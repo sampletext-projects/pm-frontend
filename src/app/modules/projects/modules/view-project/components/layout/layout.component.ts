@@ -6,11 +6,11 @@ import {ProjectStyle} from "../../../../../../enums/project-style.enum";
 import {ProjectVisibility} from "../../../../../../enums/project-visibility.enum";
 
 @Component({
-  selector: 'app-view-project',
-  templateUrl: './view-project.component.html',
-  styleUrls: ['./view-project.component.scss']
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss']
 })
-export class ViewProjectComponent implements OnInit {
+export class LayoutComponent implements OnInit {
 
   id: string = ''
   project: ProjectGetByIdResponse = {

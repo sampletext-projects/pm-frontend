@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ViewProjectComponent} from './components/view-project/view-project.component';
+import {LayoutComponent} from './components/layout/layout.component';
 import {RouterModule, Routes} from "@angular/router";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
@@ -11,7 +11,7 @@ import {MatIconModule} from "@angular/material/icon";
 const routes: Routes = [
   {
     path: ':id',
-    component: ViewProjectComponent,
+    component: LayoutComponent,
     children: [
       {
         path: '',
@@ -39,7 +39,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    ViewProjectComponent
+    LayoutComponent
   ],
   imports: [
     CommonModule,
