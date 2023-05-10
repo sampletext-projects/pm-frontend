@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.comments{
+  gap: 1em;
+
+}
+.comments:last-child {
+  display: none;
+}
+.inputs {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-center {
+  display: flex;
+  justify-content: center;
+}
+
+.spinner {
+  margin: 10px;
+}

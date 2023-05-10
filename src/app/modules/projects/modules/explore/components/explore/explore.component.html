@@ -2,14 +2,20 @@
   <mat-toolbar-row>
     Explore
     <span class="spacer"></span>
-    <button mat-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
-            (click)="goToCreateProject()">
-      <mat-icon>addchart</mat-icon>
-      Создать проект
-    </button>
+    <div class="col button">
+      <button mat-stroked-button color="warn" (click)="logout()" class="exit-button">
+        Выйти из профиля
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 <div class="container">
+  <button mat-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+          (click)="goToCreateProject()">
+    <mat-icon>addchart</mat-icon>
+    Создать новый проект
+  </button>
   <div class="wrapper" *ngIf="projects.length">
     <mat-card *ngFor="let project of projects" class="project-card">
       <mat-card-header>

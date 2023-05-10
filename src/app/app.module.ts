@@ -9,6 +9,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {RequestsInterceptor} from "./interceptors/requests.interceptor";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {DateInterceptor} from "./interceptors/date.interceptor";
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {};
 const DEFAULT_PERFECT_SCROLLBAR_PROVIDER: Provider = {
@@ -21,6 +22,12 @@ const INTERCEPTOR_PROVIDER: Provider = {
   multi: true,
   useClass: RequestsInterceptor
 }
+
+const DATE_INTERCEPTOR_PROVIDER: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: DateInterceptor
+};
 
 @NgModule({
   declarations: [
@@ -35,7 +42,7 @@ const INTERCEPTOR_PROVIDER: Provider = {
     MatExpansionModule,
     MatSnackBarModule,
   ],
-  providers: [INTERCEPTOR_PROVIDER, DEFAULT_PERFECT_SCROLLBAR_PROVIDER],
+  providers: [INTERCEPTOR_PROVIDER, DEFAULT_PERFECT_SCROLLBAR_PROVIDER, DATE_INTERCEPTOR_PROVIDER],
   bootstrap: [AppComponent]
 })
 export class AppModule {

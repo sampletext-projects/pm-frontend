@@ -22,7 +22,7 @@ export class InviteComponent implements OnInit {
     email: '',
     username: null
   });
-  usersSearch: Observable<SearchUserItem[]> = of()
+  usersSearch: Observable<SearchUserItem[]> = of([])
   roleControl = new FormControl(ParticipationRole.Unknown, [Validators.required]);
   projectId: string = '';
 

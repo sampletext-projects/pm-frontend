@@ -1,1 +1,42 @@
-<p>comments works!</p>
+<div class="container">
+  <div mat-line>Комментарии</div>
+  <mat-card class="inputs comments">
+    <div *ngFor="let comment of comments; let index = index">
+      <div mat-line class="comment-content">
+        {{comment.content}}
+      </div>
+      <div mat-line class="comment-author">
+        {{comment.authorUsername}}
+      </div>
+      <div mat-line class="comment-date">
+        {{comment.createdAt.toLocaleString()}}
+      </div>
+      <mat-divider *ngIf="index !== comments.length - 1"></mat-divider>
+    </div>
+    <div *ngIf="!comments.length && !isLoading">
+      <div mat-line>Нет комментариев</div>
+    </div>
+    <div *ngIf="isLoading" class="example-box">
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+      </mat-progress-spinner>
+    </div>
+  </mat-card>
+
+  <mat-card class="inputs" [formGroup]="formGroup">
+    <mat-form-field appearance="fill">
+      <mat-label>Комментарий</mat-label>
+      <input matInput formControlName="content">
+      <mat-error *ngIf="formGroup.controls['content'].hasError('required')">
+        Заполните это поле
+      </mat-error>
+      <mat-error *ngIf="formGroup.controls['content'].hasError('maxlength')">
+        Максимальная длина - {{formGroup.controls['content']?.errors?.['maxlength']?.requiredLength}}
+      </mat-error>
+    </mat-form-field>
+    <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent" (click)="onSubmit()" class="button-center">
+      <span *ngIf="!isFormSent">Добавить комментарий</span>
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
+      </mat-progress-spinner>
+    </button>
+  </mat-card>
+</div>

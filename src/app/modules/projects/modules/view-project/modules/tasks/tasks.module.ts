@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
-import { TasksComponent } from './components/tasks/tasks.component';
+import {TasksComponent} from './components/tasks/tasks.component';
 import {MatButtonModule} from "@angular/material/button";
-import { CreateTaskComponent } from './components/create-task/create-task.component';
+import {CreateTaskComponent} from './components/create-task/create-task.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: TasksComponent
-  },{
+  }, {
     path: 'create',
     component: CreateTaskComponent
   }
@@ -28,4 +28,5 @@ const routes: Routes = [
     MatButtonModule,
   ]
 })
-export class TasksModule { }
+export class TasksModule {
+}

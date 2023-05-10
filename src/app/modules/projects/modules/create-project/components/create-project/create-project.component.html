@@ -1,6 +1,12 @@
 <mat-toolbar>
-  <mat-toolbar-row>
+  <mat-toolbar-row class="header">
     Create Project
+    <div class="col button">
+      <button mat-stroked-button color="warn" (click)="goToExplore()" class="exit-button">
+        Отменить и вернуться
+        <mat-icon>dangerous</mat-icon>
+      </button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -57,13 +63,13 @@
       </div>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Save</ng-template>
-
-      <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent" (click)="onSubmit()" class="button-center">
-        <span *ngIf="!isFormSent">Сохранить</span>
-        <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
-        </mat-progress-spinner>
-      </button>
+      <ng-template matStepLabel>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent" (click)="onSubmit()" class="button-center">
+          <span *ngIf="!isFormSent">Сохранить</span>
+          <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
+          </mat-progress-spinner>
+        </button>
+      </ng-template>
     </mat-step>
   </mat-vertical-stepper>
 </div>

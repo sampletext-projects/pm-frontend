@@ -64,4 +64,8 @@ export class CreateProjectComponent implements OnInit {
         }
       })
   }
+
+  goToExplore() {
+    this.router.navigate(['projects', 'explore'])
+  }
 }

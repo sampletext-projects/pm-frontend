@@ -3,8 +3,6 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../../../services/auth.service";
 import {Router} from "@angular/router";
-import {tap} from "rxjs";
-import {catchError} from "rxjs/operators";
 import {LoginRequest} from "../../../../interfaces/login-request.interface";
 
 @Component({

@@ -56,4 +56,8 @@ export class ExploreComponent implements OnInit {
   openProject(id: string) {
     this.router.navigate(['projects', 'view', id])
   }
+
+  logout() {
+    this.router.navigate(['auth', 'login'])
+  }
 }

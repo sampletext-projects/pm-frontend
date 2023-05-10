@@ -13,6 +13,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatButtonModule} from "@angular/material/button";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatIconModule} from "@angular/material/icon";
 
 const routes: Routes = [
   {
@@ -25,20 +26,21 @@ const routes: Routes = [
   declarations: [
     CreateProjectComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatToolbarModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    MatCardModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatButtonModule,
-    MatProgressSpinnerModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatToolbarModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatButtonModule,
+        MatProgressSpinnerModule,
+        MatIconModule
+    ]
 })
 export class CreateProjectModule {
 }
