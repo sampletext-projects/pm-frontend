@@ -27,9 +27,8 @@ export class ExploreComponent implements OnInit {
       .subscribe({
         next: response => {
           this.projects = response.projects
-          this.isLoading = false
         },
-        error: err => {
+        complete: () => {
           this.isLoading = false
         }
       })

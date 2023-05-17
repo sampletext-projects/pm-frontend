@@ -6,7 +6,7 @@
     <mat-label>Search</mat-label>
     <input type="text" matInput [formControl]="control" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsernameOrEmail">
-      <mat-option *ngFor="let user of usersSearch | async" [value]="user">
+      <mat-option *ngFor="let user of usersSearch$ | async" [value]="user">
         {{getUsernameOrEmail(user)}}
       </mat-option>
     </mat-autocomplete>

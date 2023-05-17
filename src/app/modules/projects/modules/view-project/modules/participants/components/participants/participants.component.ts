@@ -38,12 +38,16 @@ export class ParticipantsComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.participantService.getByProject(this.projectId)
-      .subscribe(response => {
-        this.allParticipants = response.participants;
-        this.creator = this.allParticipants.find(x => x.role === ParticipationRole.Creator)!;
-        this.admins = this.allParticipants.filter(x => x.role === ParticipationRole.Admin);
-        this.readonlys = this.allParticipants.filter(x => x.role === ParticipationRole.Readonly);
-        this.isLoading = false;
+      .subscribe({
+        next: response => {
+          this.allParticipants = response.participants;
+          this.creator = this.allParticipants.find(x => x.role === ParticipationRole.Creator)!;
+          this.admins = this.allParticipants.filter(x => x.role === ParticipationRole.Admin);
+          this.readonlys = this.allParticipants.filter(x => x.role === ParticipationRole.Readonly);
+        },
+        complete: () => {
+          this.isLoading = false;
+        }
       })
   }
 

@@ -55,9 +55,8 @@ export class CommentsComponent implements OnInit {
       .subscribe({
         next: () => {
           this.loadComments()
-          this.isFormSent = false;
         },
-        error: () => {
+        complete: () => {
           this.isFormSent = false;
         }
       })

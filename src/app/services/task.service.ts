@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ProjectExploreResponse} from "../interfaces/project-explore-response.interface";
 import {environment} from "../../environments/environment";
 import {TaskGetByProjectResponse} from "../interfaces/task-getbyproject-response.interface";
+import {CreateTaskRequest} from "../interfaces/create-task-request.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,9 @@ export class TaskService {
         projectId: id
       }
     });
+  }
+
+  public create(request: CreateTaskRequest): Observable<{id: string}> {
+    return this.httpClient.post<{id:string}>(`${environment.baseUrl}/task/create`, request);
   }
 }

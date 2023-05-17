@@ -54,13 +54,10 @@ export class CreateProjectComponent implements OnInit {
     this.projectService.create(request)
       .subscribe({
         next: () => {
-          this.isFormSent = false;
           this.router.navigate(['projects', 'explore'])
         },
-        error: err => {
+        complete: () => {
           this.isFormSent = false;
-          console.log(err)
-          // this.matSnackBar.open(err.error, '', {duration: 3000})
         }
       })
   }

@@ -39,13 +39,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(request)
       .subscribe({
         next: () => {
-          this.isFormSent = false;
           this.router.navigate(['home'])
         },
-        error: err => {
+        complete: () => {
           this.isFormSent = false;
-          console.log(err)
-          // this.matSnackBar.open(err.error, '', {duration: 3000})
         }
       })
   }

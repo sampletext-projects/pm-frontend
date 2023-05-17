@@ -1,7 +1,83 @@
-<div class="container">
-  <div *ngIf="!tasks.length">Похоже тут ещё нет задач</div>
-  <div *ngFor="let task of tasks">
-    {{task.title}}
+<div class="container" #container>
+  <div class="tasks-wrapper">
+    <div class="tasks-column">
+      <div class="column-header">
+        Created
+      </div>
+      <div *ngIf="isLoading">
+        <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+        </mat-progress-spinner>
+      </div>
+
+      <div class="task-list"
+           cdkDropList
+           #createdList="cdkDropList"
+           [cdkDropListData]="createdTasks"
+           [cdkDropListConnectedTo]="[inProgressList, testingList, doneList]"
+           (cdkDropListDropped)="drop($event)">
+        <div class="task-wrapper" *ngFor="let task of createdTasks" cdkDrag [cdkDragPreviewContainer]="containerRef.nativeElement">
+          {{task.title}}
+        </div>
+      </div>
+
+      <button mat-flat-button color="accent" (click)="goToCreateTask()">Create Task</button>
+    </div>
+    <div class="tasks-column">
+      <div class="column-header">
+        InProgress
+      </div>
+      <div *ngIf="isLoading">
+        <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+        </mat-progress-spinner>
+      </div>
+      <div class="task-list"
+           cdkDropList
+           #inProgressList="cdkDropList"
+           [cdkDropListData]="inProgressTasks"
+           [cdkDropListConnectedTo]="[createdList, testingList, doneList]"
+           (cdkDropListDropped)="drop($event)">
+        <div class="task-wrapper" *ngFor="let task of inProgressTasks" cdkDrag [cdkDragPreviewContainer]="containerRef.nativeElement">
+          {{task.title}}
+        </div>
+      </div>
+    </div>
+    <div class="tasks-column">
+      <div class="column-header">
+        Testing
+      </div>
+      <div *ngIf="isLoading">
+        <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+        </mat-progress-spinner>
+      </div>
+      <div class="task-list"
+           cdkDropList
+           #testingList="cdkDropList"
+           [cdkDropListData]="testingTasks"
+           [cdkDropListConnectedTo]="[createdList, inProgressList, doneList]"
+           (cdkDropListDropped)="drop($event)">
+        <div class="task-wrapper" *ngFor="let task of testingTasks" cdkDrag [cdkDragPreviewContainer]="containerRef.nativeElement">
+          {{task.title}}
+        </div>
+      </div>
+    </div>
+    <div class="tasks-column">
+      <div class="column-header">
+        Done
+      </div>
+      <div *ngIf="isLoading">
+        <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
+        </mat-progress-spinner>
+      </div>
+      <div class="task-list"
+           cdkDropList
+           #doneList="cdkDropList"
+           [cdkDropListData]="doneTasks"
+           [cdkDropListConnectedTo]="[createdList, inProgressList, testingList]"
+           (cdkDropListDropped)="drop($event)">
+        <div class="task-wrapper" *ngFor="let task of doneTasks" cdkDrag [cdkDragPreviewContainer]="containerRef.nativeElement">
+          {{task.title}}
+        </div>
+      </div>
+    </div>
   </div>
-  <button mat-flat-button color="accent" (click)="goToCreateTask()">Create Task</button>
 </div>

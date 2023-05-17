@@ -41,10 +41,9 @@ export class RegisterComponent implements OnInit {
     this.authService.register(request)
       .subscribe({
         next: () => {
-          this.isFormSent = false;
           this.router.navigate(['auth', 'login'])
         },
-        error: err => {
+        complete: () => {
           this.isFormSent = false;
         }
       })

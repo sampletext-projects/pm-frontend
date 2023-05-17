@@ -22,7 +22,7 @@ export class InviteComponent implements OnInit {
     email: '',
     username: null
   });
-  usersSearch: Observable<SearchUserItem[]> = of([])
+  usersSearch$: Observable<SearchUserItem[]> = of([])
   roleControl = new FormControl(ParticipationRole.Unknown, [Validators.required]);
   projectId: string = '';
 
@@ -36,7 +36,7 @@ export class InviteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.usersSearch = this.control.valueChanges.pipe(
+    this.usersSearch$ = this.control.valueChanges.pipe(
       map(value => this.usersService.search(this.control.value).pipe(map(r => r.users))),
       switchMap(x => x)
     );
@@ -60,10 +60,9 @@ export class InviteComponent implements OnInit {
     this.projectService.addUserToProject(request)
       .subscribe({
         next: () => {
-          this.isSubmitting = false;
           this.router.navigate(['./'], {relativeTo: this._activatedRoute})
         },
-        error: () => {
+        complete: () => {
           this.isSubmitting = false;
         }
       })
