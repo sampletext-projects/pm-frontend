@@ -1,6 +1,6 @@
 <mat-toolbar>
   <mat-toolbar-row class="header">
-    Create Project
+    Создание проекта
     <div class="col button">
       <button mat-stroked-button color="warn" (click)="goToExplore()" class="exit-button">
         Отменить и вернуться
@@ -13,9 +13,9 @@
 <div class="container">
   <mat-vertical-stepper [formGroup]="formGroup">
     <mat-step>
-      <ng-template matStepLabel>Title</ng-template>
+      <ng-template matStepLabel>Название</ng-template>
       <mat-form-field class="input-full-width" appearance="fill">
-        <mat-label>Title</mat-label>
+        <mat-label>Название</mat-label>
         <input matInput placeholder="Title" formControlName="title">
         <mat-error *ngIf="formGroup.controls['title'].hasError('required')">
           Заполните это поле
@@ -26,9 +26,9 @@
       </mat-form-field>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Description</ng-template>
+      <ng-template matStepLabel>Описание</ng-template>
       <mat-form-field class="input-full-width" appearance="fill">
-        <mat-label>Description</mat-label>
+        <mat-label>Описание</mat-label>
         <input matInput placeholder="Description" formControlName="description">
         <mat-error *ngIf="formGroup.controls['description'].hasError('required')">
           Заполните это поле
@@ -39,10 +39,10 @@
       </mat-form-field>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Project Settings</ng-template>
+      <ng-template matStepLabel>Настройки</ng-template>
       <div class="flex-space">
         <mat-form-field appearance="fill">
-          <mat-label>Project Style</mat-label>
+          <mat-label>Тип проекта</mat-label>
           <mat-select formControlName="style">
             <mat-option [value]="0">--</mat-option>
             <mat-option *ngFor="let style of projectStyles" [value]="style.val">
@@ -52,11 +52,17 @@
           <mat-error *ngIf="formGroup.controls['style'].hasError('required')">Select Project Style</mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill">
-          <mat-label>Project Visibility</mat-label>
+          <mat-label>Видимость</mat-label>
           <mat-select formControlName="visibility">
             <mat-option [value]="ProjectVisibilityType.Unknown">--</mat-option>
-            <mat-option [value]="ProjectVisibilityType.Visible">Public</mat-option>
-            <mat-option [value]="ProjectVisibilityType.Private">Private</mat-option>
+            <mat-option [value]="ProjectVisibilityType.Visible">
+              Открытый
+              <mat-hint>Виден всем</mat-hint>
+            </mat-option>
+            <mat-option [value]="ProjectVisibilityType.Private">
+              Приватный
+              <mat-hint>Виден только участникам</mat-hint>
+            </mat-option>
           </mat-select>
           <mat-error *ngIf="formGroup.controls['visibility'].hasError('required')">Select Project Visibility</mat-error>
         </mat-form-field>

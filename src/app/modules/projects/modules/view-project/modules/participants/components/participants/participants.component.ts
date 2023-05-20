@@ -5,6 +5,8 @@ import {ParticipantItem} from "../../../../../../../../interfaces/participant-ge
 import {ParticipationRole} from "../../../../../../../../enums/participation-role.enum";
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatDialog} from "@angular/material/dialog";
+import {InviteComponent} from "../invite/invite.component";
 
 @Component({
   selector: 'app-participants',
@@ -31,6 +33,7 @@ export class ParticipantsComponent implements OnInit {
     private router: Router,
     private _activatedRoute: ActivatedRoute,
     private matSnackBar: MatSnackBar,
+    public dialog: MatDialog,
   ) {
     this.projectId = _activatedRoute.snapshot.params['id']
   }
@@ -75,9 +78,8 @@ export class ParticipantsComponent implements OnInit {
                 event.previousIndex,
                 event.currentIndex,
               );
-              this.isLoading = false;
             },
-            error: () => {
+            complete: () => {
               this.isLoading = false;
             }
           })
@@ -96,14 +98,20 @@ export class ParticipantsComponent implements OnInit {
                   event.previousIndex,
                   event.currentIndex,
                 );
-                this.isLoading = false;
               },
-              error: () => {
+              complete: () => {
                 this.isLoading = false;
               }
             }
           )
       }
     }
+  }
+
+  openInvite() {
+    this.dialog.open(InviteComponent, {
+      data: {projectId: this.projectId},
+      disableClose: true
+    })
   }
 }

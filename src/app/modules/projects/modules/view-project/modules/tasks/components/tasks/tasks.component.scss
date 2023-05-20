@@ -32,6 +32,9 @@
         &.cdk-drag-placeholder {
           opacity: 0.7;
         }
+        &:hover {
+          background: #fafafa;
+        }
       }
     }
   }

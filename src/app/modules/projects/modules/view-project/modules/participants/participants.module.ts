@@ -14,6 +14,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatDialogModule} from "@angular/material/dialog";
 
 const routes: Routes = [
   {
@@ -30,20 +31,21 @@ const routes: Routes = [
     ParticipantsComponent,
     InviteComponent
   ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes),
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatListModule,
-    MatIconModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    DragDropModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        MatCardModule,
+        MatProgressSpinnerModule,
+        MatListModule,
+        MatIconModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        DragDropModule,
+        MatDialogModule
+    ]
 })
 export class ParticipantsModule { }

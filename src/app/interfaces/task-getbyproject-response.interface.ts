@@ -1,12 +1,6 @@
-import {TaskStatus} from "../enums/task-status.enum";
+import {TaskItem} from "./task-item.interface";
 
 export interface TaskGetByProjectResponse {
   tasks: TaskItem[]
 }
 
-export interface TaskItem {
-  id: string,
-  title: string,
-  description: string | null,
-  status: TaskStatus
-}

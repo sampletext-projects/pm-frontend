@@ -1,26 +1,41 @@
-<div class="container">
-  <div>
-    Invite
-  </div>
+<h1 mat-dialog-title>
+  Добавление участников
+</h1>
+<div mat-dialog-content class="container">
   <mat-form-field appearance="fill">
-    <mat-label>Search</mat-label>
+    <mat-label>
+      Поиск
+      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isSearching" class="spinner">
+      </mat-progress-spinner>
+    </mat-label>
     <input type="text" matInput [formControl]="control" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsernameOrEmail">
       <mat-option *ngFor="let user of usersSearch$ | async" [value]="user">
         {{getUsernameOrEmail(user)}}
       </mat-option>
     </mat-autocomplete>
+    <mat-error *ngIf="roleControl.hasError('required')">Необходимо выбрать пользователя</mat-error>
+    <mat-hint>Начните вводить имя пользователя или e-mail</mat-hint>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Role</mat-label>
+    <mat-label>Роль</mat-label>
     <mat-select [formControl]="roleControl">
-      <mat-option [value]="RoleType.Unknown">--</mat-option>
-      <mat-option [value]="RoleType.Admin">Admin</mat-option>
-      <mat-option [value]="RoleType.Readonly">Readonly</mat-option>
+      <mat-option [value]="RoleType.Unknown">Не выбрано</mat-option>
+      <mat-option [value]="RoleType.Admin">Администратор
+        <mat-hint>Может изменять проект</mat-hint>
+      </mat-option>
+      <mat-option [value]="RoleType.Readonly">Участник
+        <mat-hint>Может просматривать проект</mat-hint>
+      </mat-option>
     </mat-select>
-    <mat-error *ngIf="roleControl.hasError('required')">Select User Role</mat-error>
+    <mat-error *ngIf="roleControl.hasError('required')">Выберите роль</mat-error>
+    <mat-error *ngIf="roleControl.hasError('min')">Необходимо указать роль</mat-error>
+    <mat-hint>Роль пользователя</mat-hint>
   </mat-form-field>
-  <button mat-stroked-button (click)="onSubmit()" class="button-center">
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="onClose()">Закрыть</button>
+  <button mat-stroked-button (click)="onSubmit()" class="button-center" [disabled]="control.invalid">
     <span *ngIf="!isSubmitting">Добавить пользователя</span>
     <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isSubmitting" class="spinner">
     </mat-progress-spinner>

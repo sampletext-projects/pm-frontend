@@ -24,8 +24,8 @@ export class CreateProjectComponent implements OnInit {
   projectStyles = [
     // 'Не указан',
     {val: ProjectStyle.IT, label: 'IT'},
-    {val: ProjectStyle.Design, label: 'Design'},
-    {val: ProjectStyle.Marketing, label: 'Marketing'},
+    {val: ProjectStyle.Design, label: 'Дизайн'},
+    {val: ProjectStyle.Marketing, label: 'Маркетинг'},
   ];
 
   constructor(
