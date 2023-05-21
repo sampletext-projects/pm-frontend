@@ -13,6 +13,9 @@ import { TaskModalComponent } from './components/task-modal/task-modal.component
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDividerModule} from "@angular/material/divider";
+import {MatIconModule} from "@angular/material/icon";
+import { TaskCommentsModalComponent } from './components/task-comments-modal/task-comments-modal.component';
+import {MatLineModule} from "@angular/material/core";
 
 
 const routes: Routes = [
@@ -26,7 +29,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     TasksComponent,
-    TaskModalComponent
+    TaskModalComponent,
+    TaskCommentsModalComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +45,8 @@ const routes: Routes = [
     MatDialogModule,
     MatSelectModule,
     MatDividerModule,
+    MatIconModule,
+    MatLineModule,
   ]
 })
 export class TasksModule {

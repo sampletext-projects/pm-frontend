@@ -8,6 +8,9 @@
         <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
         </mat-progress-spinner>
       </div>
+      <div *ngIf="!createdTasks.length && !isLoading" class="empty">
+        Нет задач
+      </div>
 
       <div class="task-list"
            cdkDropList
@@ -21,10 +24,11 @@
             <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
             </mat-progress-spinner>
           </div>
+          <mat-icon color="primary" class="comments" (click)="openComments($event, task)">question_answer</mat-icon>
         </div>
       </div>
 
-      <button mat-stroked-button color="primary" (click)="goToCreateTask()">Создать задачу</button>
+      <button mat-flat-button color="primary" (click)="goToCreateTask()">Создать задачу</button>
     </div>
     <mat-divider vertical="true"></mat-divider>
     <div class="tasks-column">
@@ -34,6 +38,9 @@
       <div *ngIf="isLoading">
         <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
         </mat-progress-spinner>
+      </div>
+      <div *ngIf="!inProgressTasks.length && !isLoading" class="empty">
+        Нет задач
       </div>
       <div class="task-list"
            cdkDropList
@@ -47,6 +54,7 @@
             <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
             </mat-progress-spinner>
           </div>
+          <mat-icon color="primary" class="comments" (click)="openComments($event, task)">question_answer</mat-icon>
         </div>
       </div>
     </div>
@@ -58,6 +66,9 @@
       <div *ngIf="isLoading">
         <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
         </mat-progress-spinner>
+      </div>
+      <div *ngIf="!testingTasks.length && !isLoading" class="empty">
+        Нет задач
       </div>
       <div class="task-list"
            cdkDropList
@@ -71,6 +82,7 @@
             <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
             </mat-progress-spinner>
           </div>
+          <mat-icon color="primary" class="comments" (click)="openComments($event, task)">question_answer</mat-icon>
         </div>
       </div>
     </div>
@@ -82,6 +94,9 @@
       <div *ngIf="isLoading">
         <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
         </mat-progress-spinner>
+      </div>
+      <div *ngIf="!doneTasks.length && !isLoading" class="empty">
+        Нет задач
       </div>
       <div class="task-list"
            cdkDropList
@@ -95,6 +110,7 @@
             <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
             </mat-progress-spinner>
           </div>
+          <mat-icon color="primary" class="comments" (click)="openComments($event, task)">question_answer</mat-icon>
         </div>
       </div>
     </div>

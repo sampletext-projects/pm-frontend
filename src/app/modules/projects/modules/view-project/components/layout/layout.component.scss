@@ -1,71 +1,80 @@
-mat-toolbar {
-  display: flex;
+:host {
+  background-image: url('~src/assets/bg.jpg');
+  width: 100dvw;
+  height: 100dvh;
+  display: block;
 
-  .header-container{
+  mat-toolbar {
+    color: white;
+    background: transparent;
     display: flex;
-    flex-direction: column;
-  }
 
-  .header-text{
-    font-size: 1em;
-    height: auto;
-  }
-  .header-sub-text{
-    font-size: 0.75em;
-    height: auto;
-    padding-left: 0.5em;
-    font-weight: lighter;
-  }
-
-  .col {
-    height: 64px;
-    flex: 1;
-
-    img {
-      height: 40px;
-      display: block;
-      margin-top: 12px;
-    }
-
-    &.button {
-      height: 36px;
+    .header-container{
       display: flex;
-      flex-direction: row-reverse;
+      flex-direction: column;
     }
-  }
-}
 
-.container {
-  background: #fafafa;
-  min-width: 100%;
-  height: calc(100vh - 64px);
-  position: relative;
-  display: flex;
+    .header-text{
+      font-size: 1em;
+      height: auto;
+    }
+    .header-sub-text{
+      font-size: 0.75em;
+      height: auto;
+      padding-left: 0.5em;
+      font-weight: lighter;
+    }
 
-  .navbar {
-    height: 100%;
-    background: #e2e2e2;
+    .col {
+      height: 64px;
+      flex: 1;
 
-    mat-expansion-panel {
-      a {
+      img {
+        height: 40px;
         display: block;
-        color: #6F6F6E;
-        padding: 10px;
-        transition: .8s;
-        text-decoration: none;
+        margin-top: 12px;
+      }
 
-        &:active, &.active {
-          background: #e2e2ee;
-        }
+      &.button {
+        height: 36px;
+        display: flex;
+        flex-direction: row-reverse;
       }
     }
   }
 
-  .content {
-    box-sizing: border-box;
-    height: 100%;
-    width: 100%;
-    padding: 1em;
-  }
+  .container {
+    //background: #fafafa;
+    min-width: 100%;
+    height: calc(100vh - 64px);
+    position: relative;
+    display: flex;
 
+    .navbar {
+      height: 100%;
+      //background: #e2e2e2;
+
+      mat-expansion-panel {
+        a {
+          display: block;
+          color: #6F6F6E;
+          padding: 10px;
+          transition: .8s;
+          text-decoration: none;
+
+          &:active, &.active {
+            background: #e2e2ee;
+          }
+        }
+      }
+    }
+
+    .content {
+      box-sizing: border-box;
+      height: 100%;
+      width: 100%;
+      padding: 1em;
+    }
+
+  }
 }

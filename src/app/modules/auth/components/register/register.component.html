@@ -43,7 +43,7 @@
         Максимальная длина - {{formGroup.controls['username']?.errors?.['username']?.requiredLength}}
       </mat-error>
     </mat-form-field>
-    <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent" (click)="onSubmit()"
+    <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent || formGroup.invalid" (click)="onSubmit()"
             class="button-center">
       <span *ngIf="!isFormSent">Войти</span>
       <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">

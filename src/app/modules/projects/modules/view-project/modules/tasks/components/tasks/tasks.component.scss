@@ -1,3 +1,7 @@
+mat-divider {
+  background: white;
+}
+
 .tasks-wrapper {
   display: flex;
   flex-direction: row;
@@ -10,14 +14,23 @@
     gap: 0.3em;
 
     .column-header {
+      color: white;
+    }
 
+    .empty {
+      color: white;
+      border: 1px solid #e2e2e2;
+      border-radius: 0.3em;
+      padding: 20px 10px;
     }
 
     .task-list {
       min-height: calc(40px + 2em);
+
       .task-wrapper {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         color: rgba(0, 0, 0, 0.87);
         padding: 20px 10px;
         border: 1px solid #e2e2e2;
@@ -28,6 +41,10 @@
         font-size: 14px;
         width: 100%;
         user-select: none;
+
+        .comments {
+          cursor: pointer;
+        }
 
         &.cdk-drag-placeholder {
           opacity: 0.7;
@@ -73,7 +90,7 @@
 
   .cdk-drop-list-receiving {
     min-height: calc(40px + 10em);
-    border: 0.5em dashed #e2e2e2;
+    border: 0.3em dashed #e2e2e2;
     box-sizing: border-box;
     border-radius: 0.3em;
     box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
@@ -83,6 +100,7 @@
 
   .cdk-drop-list-receiving:before {
     content: 'Drop Here';
+    color: white;
     box-sizing: border-box;
     border-radius: 0.3em;
     min-height: calc(20px + 2em);

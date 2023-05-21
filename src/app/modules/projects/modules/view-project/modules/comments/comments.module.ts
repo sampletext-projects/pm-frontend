@@ -4,7 +4,6 @@ import { CommentsComponent } from './components/comments/comments.component';
 import {RouterModule, Routes} from "@angular/router";
 import {ParticipantsComponent} from "../participants/components/participants/participants.component";
 import {InviteComponent} from "../participants/components/invite/invite.component";
-import { AddCommentComponent } from './components/add-comment/add-comment.component';
 import {MatListModule} from "@angular/material/list";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {MatCardModule} from "@angular/material/card";
@@ -18,16 +17,12 @@ const routes: Routes = [
   {
     path: '',
     component: CommentsComponent
-  },{
-    path: 'add',
-    component: AddCommentComponent
   }
 ]
 
 @NgModule({
   declarations: [
-    CommentsComponent,
-    AddCommentComponent
+    CommentsComponent
   ],
   imports: [
     CommonModule,

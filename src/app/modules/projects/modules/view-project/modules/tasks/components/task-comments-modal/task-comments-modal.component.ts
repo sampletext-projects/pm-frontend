@@ -1,30 +1,29 @@
-import {Component, OnInit} from '@angular/core';
-import {CommentService} from "../../../../../../../../services/comment.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {ActivatedRoute} from "@angular/router";
+import {CommentService} from "../../../../../../../../services/comment.service";
 import {CommentItem} from "../../../../../../../../interfaces/comment-getbyproject-response.interface";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
-  selector: 'app-comments',
-  templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss']
+  selector: 'app-task-comments-modal',
+  templateUrl: './task-comments-modal.component.html',
+  styleUrls: ['./task-comments-modal.component.scss']
 })
-export class CommentsComponent implements OnInit {
-
+export class TaskCommentsModalComponent implements OnInit {
   isLoading: boolean = false;
-  private projectId: string = '';
   comments: CommentItem[] = [];
   formGroup: FormGroup = new FormGroup({})
   isFormSent: boolean = false;
 
   constructor(
-    private commentService: CommentService,
-    private router: Router,
-    private _activatedRoute: ActivatedRoute,
+    public dialogRef: MatDialogRef<TaskCommentsModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: {taskId: string},
     private matSnackBar: MatSnackBar,
+    private commentService: CommentService,
+    private _activatedRoute: ActivatedRoute,
   ) {
-    this.projectId = _activatedRoute.snapshot.params['id']
     this.formGroup = new FormGroup({
       'content': new FormControl('', [Validators.required, Validators.maxLength(512)]),
     })
@@ -34,10 +33,10 @@ export class CommentsComponent implements OnInit {
     this.loadComments()
   }
 
-  loadComments(){
+  loadComments() {
 
     this.isLoading = true;
-    this.commentService.getByProject(this.projectId)
+    this.commentService.getByTask(this.data.taskId)
       .subscribe({
         next: response => {
           this.comments = response.comments
@@ -55,14 +54,21 @@ export class CommentsComponent implements OnInit {
       return;
     }
     this.isFormSent = true;
-    this.commentService.createForProject(this.projectId, this.formGroup.controls['content'].value)
+    this.commentService.createForTask(this.data.taskId, this.formGroup.controls['content'].value)
       .subscribe({
         next: () => {
           this.loadComments()
+        },
+        error: () => {
+          this.isFormSent = false;
         },
         complete: () => {
           this.isFormSent = false;
         }
       })
+  }
+
+  onClose() {
+    this.dialogRef.close()
   }
 }

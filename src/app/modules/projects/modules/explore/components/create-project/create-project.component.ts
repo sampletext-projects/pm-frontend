@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AuthService} from "../../../../../../services/auth.service";
@@ -9,6 +9,8 @@ import {ProjectService} from "../../../../../../services/project.service";
 import {CreateProjectRequest} from "../../../../../../interfaces/create-project-request.interface";
 import {Projects} from "@angular/cli/lib/config/workspace-schema";
 import {ProjectVisibility} from "../../../../../../enums/project-visibility.enum";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {TaskModalData} from "../../../view-project/modules/tasks/components/task-modal/task-modal-data.interface";
 
 @Component({
   selector: 'app-create-project',
@@ -29,6 +31,8 @@ export class CreateProjectComponent implements OnInit {
   ];
 
   constructor(
+    public dialogRef: MatDialogRef<CreateProjectComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: TaskModalData,
     private matSnackBar: MatSnackBar,
     private projectService: ProjectService,
     private router: Router
@@ -36,8 +40,8 @@ export class CreateProjectComponent implements OnInit {
     this.formGroup = new FormGroup({
       'title': new FormControl('', [Validators.required, Validators.maxLength(32)]),
       'description': new FormControl('', [Validators.maxLength(512)]),
-      'style': new FormControl(0, [Validators.required]),
-      'visibility': new FormControl(0, [Validators.required]),
+      'style': new FormControl(0, [Validators.required, Validators.min(1)]),
+      'visibility': new FormControl(0, [Validators.required, Validators.min(1)]),
     })
   }
 
@@ -54,7 +58,7 @@ export class CreateProjectComponent implements OnInit {
     this.projectService.create(request)
       .subscribe({
         next: () => {
-          this.router.navigate(['projects', 'explore'])
+          this.dialogRef.close(true)
         },
         complete: () => {
           this.isFormSent = false;
@@ -62,7 +66,7 @@ export class CreateProjectComponent implements OnInit {
       })
   }
 
-  goToExplore() {
-    this.router.navigate(['projects', 'explore'])
+  onClose() {
+    this.dialogRef.close(false)
   }
 }

@@ -7,6 +7,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatDialog} from "@angular/material/dialog";
 import {TaskModalComponent} from "../task-modal/task-modal.component";
 import {TaskItem} from "../../../../../../../../interfaces/task-item.interface";
+import {TaskCommentsModalComponent} from "../task-comments-modal/task-comments-modal.component";
 
 interface TaskVisualItem {
   item: TaskItem,
@@ -154,6 +155,19 @@ export class TasksComponent implements OnInit {
       if (hasValueChanged) {
         this.loadTasks()
       }
+    });
+  }
+
+  openComments($event: MouseEvent, task: TaskVisualItem) {
+    $event.stopPropagation()
+
+    const dialogRef = this.dialog.open(TaskCommentsModalComponent, {
+      data: {taskId: task.item.id},
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(hasValueChanged => {
+
     });
   }
 }

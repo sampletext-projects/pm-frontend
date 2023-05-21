@@ -1,14 +1,68 @@
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+.container {
+  background-image: url('~src/assets/bg.jpg');
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.example-full-width {
-  width: 100%;
+.logo {
+  text-decoration: none;
+  color: white;
 }
 
-.my-card {
-  max-width: 300px;
-  margin: 0 auto;
+header {
+  display: flex;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.navigator {
+  display: flex;
+  gap: 0.5em;
+}
+
+main {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main > h1, main > h2 {
+  margin: 0;
+  padding: 0;
+}
+
+main h1 {
+  text-transform: uppercase;
+}
+
+footer {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.start {
+  text-decoration: none;
+  color: black;
+  padding: 1em 2em;
+  background: #fafafa;
+  border: 1px solid black;
+  border-radius: 2em;
+  margin: 1em 0 0;
+
+  &:hover {
+    //background: #e2e2e2;
+    box-shadow: 0 5px 5px -3px rgba(255, 255, 255, 0.2),
+    0 8px 10px 1px rgba(255, 255, 255, 0.14),
+    0 3px 14px 2px rgba(255, 255, 255, 0.12);
+  }
 }

@@ -1,6 +1,8 @@
-<div class="container">
-  <div mat-line>Комментарии</div>
-  <mat-card class="inputs comments">
+<h1 mat-dialog-title>
+  Комментарии
+</h1>
+<div mat-dialog-content class="container">
+  <div class="comments">
     <div *ngFor="let comment of comments; let index = index">
       <div mat-line class="comment-content">
         {{comment.content}}
@@ -20,12 +22,12 @@
       <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" class="spinner">
       </mat-progress-spinner>
     </div>
-  </mat-card>
+  </div>
 
-  <mat-card class="inputs" [formGroup]="formGroup">
+  <div class="inputs" [formGroup]="formGroup">
     <mat-form-field appearance="fill">
       <mat-label>Комментарий</mat-label>
-      <input matInput formControlName="content">
+      <textarea matInput formControlName="content"></textarea>
       <mat-error *ngIf="formGroup.controls['content'].hasError('required')">
         Заполните это поле
       </mat-error>
@@ -33,10 +35,14 @@
         Максимальная длина - {{formGroup.controls['content']?.errors?.['maxlength']?.requiredLength}}
       </mat-error>
     </mat-form-field>
-    <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent || formGroup.invalid" (click)="onSubmit()" class="button-center">
-      <span *ngIf="!isFormSent">Добавить комментарий</span>
-      <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
-      </mat-progress-spinner>
-    </button>
-  </mat-card>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button (click)="onClose()">Закрыть</button>
+  <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent || formGroup.invalid" (click)="onSubmit()"
+          class="button-center">
+    <span *ngIf="!isFormSent">Добавить комментарий</span>
+    <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
+    </mat-progress-spinner>
+  </button>
 </div>

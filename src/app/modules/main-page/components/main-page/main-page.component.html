@@ -1,3 +1,19 @@
-<button (click)="goToLogin()">Login</button>
-<button (click)="goToRegister()">Register</button>
-<button (click)="goToProjects()">Projects</button>
+<div class="container">
+  <header>
+    <a [routerLink]="['/']" class="logo">
+      <h1>Project Hub</h1>
+    </a>
+    <div class="navigator">
+      <a mat-flat-button color="primary" [routerLink]="['../', 'auth', 'login']">Войти</a>
+      <a mat-flat-button color="primary" [routerLink]="['../', 'auth', 'register']">Регистрация</a>
+    </div>
+  </header>
+  <main>
+    <h1>Здесь</h1>
+    <h2>Вы можете управлять своими проектами</h2>
+    <a [routerLink]="['../', 'projects', 'explore']" class="start">Начните сейчас</a>
+  </main>
+  <footer>
+    <p>&copy; 2023 Project Hub. All rights reserved.</p>
+  </footer>
+</div>

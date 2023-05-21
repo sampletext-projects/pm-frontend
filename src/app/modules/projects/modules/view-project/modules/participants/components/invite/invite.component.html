@@ -35,7 +35,7 @@
 </div>
 <div mat-dialog-actions>
   <button mat-stroked-button (click)="onClose()">Закрыть</button>
-  <button mat-stroked-button (click)="onSubmit()" class="button-center" [disabled]="control.invalid">
+  <button mat-stroked-button (click)="onSubmit()" class="button-center" [disabled]="control.invalid || roleControl.invalid">
     <span *ngIf="!isSubmitting">Добавить пользователя</span>
     <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isSubmitting" class="spinner">
     </mat-progress-spinner>

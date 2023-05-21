@@ -1,17 +1,17 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    Explore
-    <span class="spacer"></span>
-    <div class="col button">
-      <button mat-stroked-button color="warn" (click)="logout()" class="exit-button">
-        Выйти из профиля
-        <mat-icon>exit_to_app</mat-icon>
-      </button>
-    </div>
-  </mat-toolbar-row>
-</mat-toolbar>
 <div class="container">
-  <button mat-stroked-button color="primary" (click)="goToCreateProject()">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      Обозреватель
+      <span class="spacer"></span>
+      <div class="col button">
+        <button mat-flat-button color="warn" (click)="logout()" class="exit-button">
+          Выйти из профиля
+          <mat-icon>exit_to_app</mat-icon>
+        </button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <button mat-flat-button color="primary" (click)="openCreateProject()">
     <mat-icon>addchart</mat-icon>
     Создать новый проект
   </button>

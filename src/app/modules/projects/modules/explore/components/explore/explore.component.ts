@@ -3,6 +3,9 @@ import {ProjectService} from "../../../../../../services/project.service";
 import {ProjectExploreItem} from "../../../../../../interfaces/project-explore-response.interface";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatDialog} from "@angular/material/dialog";
+import {TaskModalComponent} from "../../../view-project/modules/tasks/components/task-modal/task-modal.component";
+import {CreateProjectComponent} from "../create-project/create-project.component";
 
 @Component({
   selector: 'app-explore',
@@ -17,11 +20,16 @@ export class ExploreComponent implements OnInit {
   constructor(
     private matSnackBar: MatSnackBar,
     private projectService: ProjectService,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog,
   ) {
   }
 
   ngOnInit(): void {
+    this.loadProjects()
+  }
+
+  loadProjects() {
     this.isLoading = true;
     this.projectService.explore()
       .subscribe({
@@ -34,8 +42,17 @@ export class ExploreComponent implements OnInit {
       })
   }
 
-  goToCreateProject() {
-    this.router.navigate(['projects', 'create'])
+  openCreateProject() {
+    const dialogRef = this.dialog.open(CreateProjectComponent, {
+      data: {},
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(hasValueChanged => {
+      if (hasValueChanged) {
+        this.loadProjects()
+      }
+    });
   }
 
   joinProject(id: string) {

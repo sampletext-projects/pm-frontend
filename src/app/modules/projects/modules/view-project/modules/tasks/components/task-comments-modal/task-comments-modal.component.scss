@@ -1,10 +1,16 @@
 .container {
-  width: 100dvw;
-  height: 100dvh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('~src/assets/bg.jpg');
+  flex-direction: column;
+  gap: 1em;
+}
+
+.comments {
+  gap: 0.3em;
+
+}
+
+.comments:last-child {
+  display: none;
 }
 
 .inputs {

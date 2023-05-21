@@ -1,6 +1,6 @@
 import {ParticipationRole} from "../enums/participation-role.enum";
 
-export interface CommentGetByProjectResponse {
+export interface CommentGetResponse {
   comments: CommentItem[]
 }
 

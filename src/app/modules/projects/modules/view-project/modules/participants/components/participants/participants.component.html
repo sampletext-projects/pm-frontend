@@ -1,5 +1,5 @@
 <div class="container" cdkDropListGroup>
-  <div mat-subheader>Создатель</div>
+  <div mat-subheader class="subheader">Создатель</div>
   <div
     class="example-list">
     <div class=" example-box" *ngIf="!isLoading">
@@ -14,7 +14,7 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div mat-subheader>Администраторы</div>
+  <div mat-subheader class="subheader">Администраторы</div>
   <div cdkDropList
        class="example-list"
        #adminList="cdkDropList"
@@ -36,7 +36,7 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div mat-subheader>Пользователи</div>
+  <div mat-subheader class="subheader">Пользователи</div>
   <div
     cdkDropList
     class="example-list"
@@ -58,5 +58,5 @@
       </mat-progress-spinner>
     </div>
   </div>
-  <button (click)="openInvite()" mat-stroked-button>Пригласить участников</button>
+  <button (click)="openInvite()" mat-flat-button color="primary">Пригласить участников</button>
 </div>
