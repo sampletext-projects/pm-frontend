@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ProjectService} from "../../../../services/project.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../../../services/auth.service";
 
 @Component({
   selector: 'app-main-page',
@@ -9,23 +10,25 @@ import {Router} from "@angular/router";
 })
 export class MainPageComponent implements OnInit {
 
+  @ViewChild("start") startRef!: ElementRef;
+
   constructor(
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
   }
 
   ngOnInit(): void {
   }
 
-  goToLogin() {
-    this.router.navigate(['auth', 'login'])
-  }
-
-  goToRegister() {
-    this.router.navigate(['auth', 'register'])
-  }
-
-  goToProjects() {
-    this.router.navigate(['projects'])
+  goToNext() {
+    this.startRef.nativeElement.classList.add('animate-scale')
+    setTimeout(() => {
+      if (this.authService.token.length) {
+        this.router.navigate(['projects', 'explore'])
+      } else {
+        this.router.navigate(['auth', 'login'])
+      }
+    }, 200)
   }
 }

@@ -8,10 +8,10 @@
       <a mat-flat-button color="primary" [routerLink]="['../', 'auth', 'register']">Регистрация</a>
     </div>
   </header>
-  <main>
+  <main #start>
     <h1>Здесь</h1>
     <h2>Вы можете управлять своими проектами</h2>
-    <a [routerLink]="['../', 'projects', 'explore']" class="start">Начните сейчас</a>
+    <a class="start" (click)="goToNext()">Начните сейчас</a>
   </main>
   <footer>
     <p>&copy; 2023 Project Hub. All rights reserved.</p>

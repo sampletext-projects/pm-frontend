@@ -2,8 +2,10 @@
   width: 100dvw;
   height: 100dvh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1em;
   background-image: url('~src/assets/bg.jpg');
 }
 
