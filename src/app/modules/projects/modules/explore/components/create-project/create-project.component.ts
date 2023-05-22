@@ -1,13 +1,10 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {AuthService} from "../../../../../../services/auth.service";
 import {Router} from "@angular/router";
-import {LoginRequest} from "../../../../../../interfaces/login-request.interface";
 import {ProjectStyle} from "../../../../../../enums/project-style.enum";
 import {ProjectService} from "../../../../../../services/project.service";
 import {CreateProjectRequest} from "../../../../../../interfaces/create-project-request.interface";
-import {Projects} from "@angular/cli/lib/config/workspace-schema";
 import {ProjectVisibility} from "../../../../../../enums/project-visibility.enum";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TaskModalData} from "../../../view-project/modules/tasks/components/task-modal/task-modal-data.interface";

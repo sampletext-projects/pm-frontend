@@ -61,7 +61,7 @@ export class CommentsComponent implements OnInit {
           this.loadComments()
         },
         error: () => {
-          this.isLoading = false;
+          this.isFormSent = false;
         },
         complete: () => {
           this.isFormSent = false;

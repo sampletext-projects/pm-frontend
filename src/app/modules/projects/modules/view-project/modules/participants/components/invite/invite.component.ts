@@ -6,10 +6,9 @@ import {SearchUserItem} from "../../../../../../../../interfaces/search-users-re
 import {ParticipationRole} from "../../../../../../../../enums/participation-role.enum";
 import {ProjectService} from "../../../../../../../../services/project.service";
 import {AddUserToProjectRequest} from "../../../../../../../../interfaces/add-user-to-project-request.interface";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {TaskModalData} from "../../../tasks/components/task-modal/task-modal-data.interface";
 
 @Component({
   selector: 'app-invite',

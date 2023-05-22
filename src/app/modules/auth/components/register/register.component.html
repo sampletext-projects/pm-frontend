@@ -45,7 +45,7 @@
     </mat-form-field>
     <button mat-stroked-button color="primary" type="submit" [disabled]="isFormSent || formGroup.invalid" (click)="onSubmit()"
             class="button-center">
-      <span *ngIf="!isFormSent">Войти</span>
+      <span *ngIf="!isFormSent">Зарегистрироваться</span>
       <mat-progress-spinner diameter="15" mode="indeterminate" strokeWidth="11%" *ngIf="isFormSent" class="spinner">
       </mat-progress-spinner>
     </button>

@@ -82,6 +82,9 @@ export class TaskModalComponent implements OnInit {
             this.matSnackBar.open('Сохранено', '', {duration: 3000});
             this.hasValueChanged = true;
           },
+          error: () => {
+            this.isFormSent = false;
+          },
           complete: () => {
             this.isFormSent = false;
           }
@@ -97,6 +100,9 @@ export class TaskModalComponent implements OnInit {
           next: () => {
             this.matSnackBar.open('Сохранено', '', {duration: 3000});
             this.hasValueChanged = true;
+          },
+          error: () => {
+            this.isFormSent = false;
           },
           complete: () => {
             this.isFormSent = false;
