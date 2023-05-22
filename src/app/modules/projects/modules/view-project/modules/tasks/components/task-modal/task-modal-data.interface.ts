@@ -1,4 +1,5 @@
 export interface TaskModalData {
   id: string,
-  mode: string
+  mode: string,
+  projectId: string
 }

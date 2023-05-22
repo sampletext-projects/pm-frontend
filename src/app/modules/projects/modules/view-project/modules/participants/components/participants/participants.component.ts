@@ -79,6 +79,9 @@ export class ParticipantsComponent implements OnInit {
                 event.currentIndex,
               );
             },
+            error: () => {
+              this.isLoading = false;
+            },
             complete: () => {
               this.isLoading = false;
             }
@@ -98,6 +101,9 @@ export class ParticipantsComponent implements OnInit {
                   event.previousIndex,
                   event.currentIndex,
                 );
+              },
+              error: () => {
+                this.isLoading = false;
               },
               complete: () => {
                 this.isLoading = false;

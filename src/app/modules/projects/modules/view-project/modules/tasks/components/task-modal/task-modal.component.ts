@@ -45,7 +45,7 @@ export class TaskModalComponent implements OnInit {
         disabled: true
       }, [])
     })
-    this.projectId = _activatedRoute.snapshot.params['id']
+    this.projectId = this.data.projectId
   }
 
   ngOnInit(): void {

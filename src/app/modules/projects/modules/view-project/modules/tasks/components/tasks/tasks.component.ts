@@ -81,7 +81,7 @@ export class TasksComponent implements OnInit {
 
   goToCreateTask() {
     const dialogRef = this.dialog.open(TaskModalComponent, {
-      data: {id: undefined, mode: 'create'},
+      data: {id: undefined, mode: 'create', projectId: this.projectId},
       disableClose: true
     });
 
@@ -130,7 +130,7 @@ export class TasksComponent implements OnInit {
             event.currentIndex,
             event.previousIndex,
           );
-          this.matSnackBar.open('Не удалось изменить статус задачи.', '', {duration: 1500})
+          // this.matSnackBar.open('Не удалось изменить статус задачи.', '', {duration: 1500})
           event.item.data.isUpdating = false;
         },
         complete: () => {
@@ -147,7 +147,7 @@ export class TasksComponent implements OnInit {
 
   open(task: TaskVisualItem) {
     const dialogRef = this.dialog.open(TaskModalComponent, {
-      data: {id: task.item.id, mode: 'edit'},
+      data: {id: task.item.id, mode: 'edit', projectId: this.projectId},
       disableClose: true
     });
 
@@ -162,7 +162,7 @@ export class TasksComponent implements OnInit {
     $event.stopPropagation()
 
     const dialogRef = this.dialog.open(TaskCommentsModalComponent, {
-      data: {taskId: task.item.id},
+      data: {taskId: task.item.id, projectId: this.projectId},
       disableClose: true
     });
 
